@@ -39,7 +39,7 @@ function GigCard(props) {
         id={plus30 > 30 ? "gig-card-plus30" : null}
       >
         <Card.Body>
-            <img src={thumbtackImg} className="thumbtackImg"></img>
+            {/* <img src={thumbtackImg} className="thumbtackImg"></img> */}
           <Card.Title>{client}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
           <Card.Text>{details}</Card.Text>

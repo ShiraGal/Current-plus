@@ -35,8 +35,8 @@ a:hover {
 }
 
 body {
-  /* background-image: url("./image/piano.jpg");
-  background-size: cover; */
+  background-image: url("./image/piano.jpg");
+  background-size: cover;
   margin: 0;
   display: flex;
   place-items: center;
@@ -92,15 +92,16 @@ body{
 
 
 .btn{
-  background-color: #3A4750;
-  color: #EEEEEE;
+  background-color: #01011b;
+  /* background-color: #3A4750; */
+  /* color: #EEEEEE; */
       --bs-btn-border-color: #3A4750;
     }
     .button:focus:not(:focus-visible) {
       outline: 0;
     }
     .btn:hover{
-      background-color: #303841;
+      background-color: #01011b84;
       border-color:#EEEEEE;
   box-shadow: 0 0 0 0.25rem #EEEEEE(13 110 253 / 25%);
 }
@@ -117,12 +118,10 @@ body{
   box-shadow: 0 0 0 0.25rem #EEEEEE(13 110 253 / 25%);
 }
 .accordion-button:not(.collapsed){
-  background-color: #3A4750;
   color: #EEEEEE;
+  background-color: #01011b;
 }
-.accordion-body{
-  background-color: #EEEEEE;
-}
+
 .shira-button{
   margin-top:  1rem!important;
   /* background-color: #3A4750;
@@ -134,10 +133,9 @@ body{
 }
 
 .accordion-button{
-  /* background-color:  #303841;
-  color: #EEEEEE;
-  border: #EEEEEE; */
-} */
+color: #EEEEEE;
+background-color: #01011b;
+} 
 
 
 .shira-outForm{
@@ -146,6 +144,7 @@ body{
 
 .shira-popup-form{
   direction: rtl;
+  
 }
 
 .out-gigs-list{
@@ -153,7 +152,7 @@ body{
   margin:  1rem;
 }
 .gigs-list{
-  color: #303841;
+  /* color: #303841; */
   direction: rtl;
   justify-content: center;
   display: flex;
@@ -163,36 +162,41 @@ body{
 
 .accordion-button:not(.collapsed)::after{
   /* background-image: var(--bs-accordion-btn-background-color#F6C90E); */
-  background-image: #F6C90E;
+  
   
 }
 
 
 
 .gig-card{
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  background-color: #EEEEEE;
+  --bs-card-bg: var(--bs-card-bg);
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  box-shadow: rgba(0, 0, 0, 0.769) 0px 8px 18px;
+color: #ffffff;
+
+  /* background-color: #FBFACD; */
+  /* background-color: #EEEEEE; */
   padding: 1em;
-  padding-top: 0%;
+  /* padding-top: 0%; */
   margin: 1em;
   /* box-shadow:  inset -75px -75px 400px #000; */
   /* background-color: red; */
   position: relative;
 }
 .card-body{
-  padding-top: 0%;
+  /* padding-top: 0%; */
 }
 #gig-card-plus30{
-  background-color: #F6C90E;
+  /* background-color: #01011b; */
   animation-name: example;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
 @keyframes example {
-  0%   {background-color: #F6C90E; }
-  
-  50%  {background-color: #EEEEEE; }
+
+  /* 0%   {background-color: #01011b; } */
+  50%  {background-color: #F6C90E; }
   
   /* 100% {border: 8px solid black;} */
   
@@ -213,3 +217,5 @@ h3{
   display: flex;
   
 }
+
+
