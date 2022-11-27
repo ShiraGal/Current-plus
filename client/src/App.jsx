@@ -8,10 +8,12 @@ import { UserContext } from './context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
+
 function App() {
 const [user, setUser] = useState([])
 // לעשות קונטקסט ליוזר
   return (
+        
     <div className="App" >
       <BrowserRouter>
        <UserContext.Provider value={{ user, setUser }}>
@@ -24,6 +26,7 @@ const [user, setUser] = useState([])
           <Route path="/register" element={<Register />}/>
         </Routes>
         </BrowserRouter>
+       
     </div>
   )
 }

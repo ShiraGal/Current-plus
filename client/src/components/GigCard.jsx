@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Button, Card } from "react-bootstrap";
-import "./components.css";
 import "../App.css";
+import thumbtackImg from "../icons/thumbtack.png"
 
 function GigCard(props) {
   const date = props.date.slice(0, 10);
@@ -24,7 +24,7 @@ function GigCard(props) {
       })
       .then((res) => {
         console.log(res);
-        setPopup("");
+        setPopup(1);
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -39,6 +39,7 @@ function GigCard(props) {
         id={plus30 > 30 ? "gig-card-plus30" : null}
       >
         <Card.Body>
+            <img src={thumbtackImg} className="thumbtackImg"></img>
           <Card.Title>{client}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
           <Card.Text>{details}</Card.Text>

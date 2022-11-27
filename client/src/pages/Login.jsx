@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import thumbtackImg from "../icons/thumbtack.png"
 
 function Login(props) {
   // const [user, setUser] = props.user
@@ -44,7 +45,10 @@ function Login(props) {
   };
   return (
     <div d-flex className="shira-outForm">
+      <div className="login-title">
+        <img className="thumbtackImg" src={thumbtackImg}></img>
       <h1>שוטף+שלושים</h1>
+      </div>
       <h3>הכרטיס הצהוב שיזכיר לך לדרוש תשלום מלקוח שהגזים</h3>
       <Form onSubmit={submitForm} className="shira-form">
         <FloatingLabel

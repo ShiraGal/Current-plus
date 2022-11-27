@@ -13,11 +13,11 @@ function Gigs(props) {
   const { user, setUser } = useContext(UserContext);
   const userId = user._id;
   const [gigs, setGigs] = useState([]);
-  const [popup, setPopup] = useState("close");
+  const [popup, setPopup] = useState(0);
 
-  const createGig = (e) => {
-    setPopup("open");
-  };
+  // const createGig = (e) => {
+  //   setPopup("open");
+  // };
   // לטפל בהרשאה
   useEffect(() => {
     axios

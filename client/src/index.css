@@ -1,6 +1,8 @@
 
 
 :root {
+  
+  width: 100%;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -15,7 +17,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  
 }
+
+/* .background-img{
+  max-width: 100%;
+  
+} */
 
 a {
   font-weight: 500;
@@ -27,6 +35,8 @@ a:hover {
 }
 
 body {
+  /* background-image: url("./image/piano.jpg");
+  background-size: cover; */
   margin: 0;
   display: flex;
   place-items: center;
@@ -73,7 +83,8 @@ button:focus-visible {
 
 
 body{
-  background-color: #3D8361;
+ 
+  /* background-color: #3D8361; */
   color: #EEEEEE;
   background-color: #303841;
   
@@ -159,14 +170,17 @@ body{
 
 
 .gig-card{
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   background-color: #EEEEEE;
-  /* padding: 1vh; */
-  margin: 2vh;
+  padding: 1em;
+  padding-top: 0%;
+  margin: 1em;
   /* box-shadow:  inset -75px -75px 400px #000; */
   /* background-color: red; */
   position: relative;
- 
-  
+}
+.card-body{
+  padding-top: 0%;
 }
 #gig-card-plus30{
   background-color: #F6C90E;
@@ -188,5 +202,14 @@ h3{
   color: #F6C90E;
   margin: 23px;
 }
-
-
+.form-floating>label{
+  color: #303841;
+}
+.thumbtackImg{
+  height: 50px;
+  margin-bottom: 1em;
+}
+.login-title{
+  display: flex;
+  
+}
