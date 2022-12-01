@@ -27,11 +27,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+color: #ffffff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #ffffffc4;
 }
 
 body {
@@ -73,9 +73,7 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
+
   /* button {
     background-color: #f9f9f9;
   } */
@@ -133,10 +131,14 @@ body{
 }
 
 .accordion-button{
+ 
 color: #EEEEEE;
 background-color: #01011b;
 } 
 
+.shira-head-Accordion{
+  /* margin-top: 35px; */
+}
 
 .shira-outForm{
   width: 100%;
@@ -145,6 +147,10 @@ background-color: #01011b;
 .shira-popup-form{
   direction: rtl;
   
+}
+
+.gigs-page{
+margin-top: 20px;
 }
 
 .out-gigs-list{
@@ -218,4 +224,53 @@ h3{
   
 }
 
+.header-out{
+  /* background-color: #01011b2e; */
+  position: fixed;
+  /* box-shadow: rgba(0, 0, 0, 0.769) 0px 8px 18px; */
+  height: 60px;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.header-in{
+display: flex;
+width: 96%;
+justify-content: space-between;
+align-items: center;
+}
+
+.header-out img{
+  height: 32px;
+  margin: 8px;
+}
+
+ a{
+  color: #ffffff;
+}
+a :hover{
+  color: #ffffff;
+  color: var(--bs-white);
+}
+.header-link{
+  padding: 8px;
+}
+/* .header-icons {
+  padding: 0%;
+  height: 45px;
+  width: 45px;
+} */
+.header-table-buttom{
+  cursor: pointer;
+}
+#header-link-true{
+  color: #F6C90E;
+}
+
+#header-link-false{
+  color: #ffffff;
+}

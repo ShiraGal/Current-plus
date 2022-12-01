@@ -2,11 +2,11 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import GigCard from "../components/GigCard";
 import Header from "../components/Header";
+
 import PopupAddGig from "../components/PopupAddGig";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
-
 
 function Gigs(props) {
   const navigate = useNavigate();
@@ -36,8 +36,9 @@ function Gigs(props) {
   }, [popup]);
 
   return (
-    <div>
-      {/* < Header userName={user.userName} userId={user._id}/> */}
+    <div className="gigs-page">
+      
+      < Header userName={user.userName} userId={user._id} path={true}/>
       <Accordion >
         <Accordion.Item eventKey="0" className="shira-head-Accordion">
           <Accordion.Header >הוסף גיג חדש</Accordion.Header>

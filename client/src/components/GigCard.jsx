@@ -10,6 +10,7 @@ function GigCard(props) {
   const payment = props.payment;
   const gigId = props._id;
   const [popup, setPopup] = props.popup;
+  let update = {};
 
   const today = Date.now();
   const gigTime = Date.parse(date);
@@ -18,10 +19,14 @@ function GigCard(props) {
   const plus30 = (today - gigTime) / day;
 
   const removeGig = (e) => {
+    console.log(e.target.id);
+    if(e.target.id==="paid"){
+      update = {paidup : true}
+    }else{
+      update = {isActive: false}
+    }
     axios
-      .put(`http://localhost:3800/api/gigs/${gigId}`, {
-        isActive: false,
-      })
+      .put(`http://localhost:3800/api/gigs/${gigId}`,update)
       .then((res) => {
         console.log(res);
         setPopup(1);
@@ -44,9 +49,14 @@ function GigCard(props) {
           <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
           <Card.Text>{details}</Card.Text>
           <Card.Subtitle>{payment} ש"ח</Card.Subtitle>
-          <Button className="shira-button" onClick={removeGig}>
-            שולם? לחץ להסרה
+          <div className="gig-card-buttons">
+          <Button className="shira-button" id="remove" onClick={removeGig}>
+            מחק
           </Button>
+          <Button className="shira-button" id="paid" onClick={removeGig}>
+            שולם!
+          </Button>
+          </div>
         </Card.Body>
       </Card>
       {/* <li>{date}</li>
