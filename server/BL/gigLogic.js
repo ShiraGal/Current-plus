@@ -21,8 +21,8 @@ async function getAllMyGigs(userId){
 
 // ------------------------------------------------------------------------------createGig
 async function createGig(data, user_Id){   
+    console.log("in createGig logic");
    const gig = await gigController.create({userId : user_Id, client : data.client, details : data.details, payment : data.payment, date : data.date})
-    console.log(gig);
     return(gig)
 }
 // ------------------------------------------------------------------------------updateGig

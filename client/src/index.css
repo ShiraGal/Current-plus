@@ -90,6 +90,7 @@ body{
 
 
 .btn{
+  --bs-btn-border-width: 0px;
   background-color: #01011b;
   /* background-color: #3A4750; */
   /* color: #EEEEEE; */
@@ -189,8 +190,9 @@ color: #ffffff;
   /* background-color: red; */
   position: relative;
 }
-.card-body{
-  /* padding-top: 0%; */
+.trashIcon{
+  height: 20px;
+
 }
 #gig-card-plus30{
   /* background-color: #01011b; */
@@ -200,12 +202,12 @@ color: #ffffff;
 }
 
 @keyframes example {
-
-  /* 0%   {background-color: #01011b; } */
   50%  {background-color: #F6C90E; }
-  
-  /* 100% {border: 8px solid black;} */
-  
+}
+
+.gig-card-buttons{
+display: flex;
+justify-content: space-between;
 }
 
 h3{
@@ -268,9 +270,27 @@ a :hover{
   cursor: pointer;
 }
 #header-link-true{
-  color: #F6C90E;
+  /* color: #F6C90E; */
+  font-weight: bold;
 }
 
 #header-link-false{
   color: #ffffff;
+  font-weight: normal;
+}
+
+.table{
+  direction: rtl;
+  --bs-table-striped-color: var(--bs-white);
+  --bs-table-color: var(--bs-white);
+}
+thead{
+  color: #F6C90E;
+}
+.table :hover {
+  color: #ffffff;
+}
+
+.table>tbody {
+  word-break: break-all;
 }

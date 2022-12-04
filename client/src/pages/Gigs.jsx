@@ -5,19 +5,22 @@ import Header from "../components/Header";
 
 import PopupAddGig from "../components/PopupAddGig";
 import { UserContext } from "../context/UserContext";
+import { GigContext } from "../context/GigContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
 
 function Gigs(props) {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+  const {gigs, setGigs} = useContext(GigContext);
   const userId = user._id;
-  const [gigs, setGigs] = useState([]);
-  const [popup, setPopup] = useState(0);
+  const [popup, setPopup] = useState(false);
 
-  // const createGig = (e) => {
-  //   setPopup("open");
-  // };
+  // const myGigs = gigs.filter((gig)=> gig.paidup===false);
+
+  const createGig = (e) => {
+    setPopup(!popup);
+  };
   // לטפל בהרשאה
   useEffect(() => {
     axios
@@ -38,7 +41,7 @@ function Gigs(props) {
   return (
     <div className="gigs-page">
       
-      < Header userName={user.userName} userId={user._id} path={true}/>
+      < Header bold={true}/>
       <Accordion >
         <Accordion.Item eventKey="0" className="shira-head-Accordion">
           <Accordion.Header >הוסף גיג חדש</Accordion.Header>
@@ -55,12 +58,12 @@ function Gigs(props) {
       <button onClick={createGig}>add gig</button> */}
 
       <div className="out-gigs-list">
-        <div>
+        {/* <div>
           <h2>הגיגים שלי</h2>
-        </div>
+        </div> */}
         <div className="gigs-list">
           {gigs
-            ? gigs.map((gig) => (
+            ? gigs.filter((gig)=> gig.paidup===false).map((gig) => (
                 <GigCard
                   popup={[popup, setPopup]}
                   date={gig.date}

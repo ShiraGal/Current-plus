@@ -25,7 +25,7 @@ function PopupAddGig(props) {
       })
       .then((res) => {
         console.log(res);
-        setPopup(2);
+        setPopup(!popup);
       })
       .catch((err) => {
         console.log(err.response.data);

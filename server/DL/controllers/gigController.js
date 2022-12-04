@@ -7,7 +7,7 @@ const gigModel= require('../models/Gig.js')
 async function create(data){
     console.log("start create gig!!");
     const newGig = await gigModel.create(data);
-    // console.log(newGig);
+    console.log(newGig);
     return newGig
 }
 // -----------------------------------------------------read all gigs by userId

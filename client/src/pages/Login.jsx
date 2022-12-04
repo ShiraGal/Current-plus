@@ -2,16 +2,34 @@ import { useRef, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import { GigContext } from "../context/GigContext";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import thumbtackImg from "../icons/thumbtack.png"
 
 function Login(props) {
   // const [user, setUser] = props.user
   const { user, setUser } = useContext(UserContext);
+  const {gigs, setGigs}= useContext(GigContext);
   const email = useRef();
   const pass = useRef();
   const navigate = useNavigate();
   //   const [userName, setUserName] = useState();
+
+  // const getAllGigs = ()=>{
+  //   axios
+  //     .get(`http://localhost:3800/api/gigs`, {
+  //       headers: {
+  //         authorization: "Bearer " + localStorage.token,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       setGigs(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // }
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -34,6 +52,7 @@ function Login(props) {
         // setUserName(res.data.msg);
         localStorage.token = res.data.token;
         setUser(res.data.msg);
+        // getAllGigs()
         navigate("/gigs");
       })
       .catch((err) => {

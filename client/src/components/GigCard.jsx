@@ -2,6 +2,7 @@ import axios from "axios";
 import { Button, Card } from "react-bootstrap";
 import "../App.css";
 import thumbtackImg from "../icons/thumbtack.png"
+import trashIcon from "../icons/trash.png"
 
 function GigCard(props) {
   const date = props.date.slice(0, 10);
@@ -29,7 +30,7 @@ function GigCard(props) {
       .put(`http://localhost:3800/api/gigs/${gigId}`,update)
       .then((res) => {
         console.log(res);
-        setPopup(1);
+        setPopup(!popup);
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -50,11 +51,11 @@ function GigCard(props) {
           <Card.Text>{details}</Card.Text>
           <Card.Subtitle>{payment} ש"ח</Card.Subtitle>
           <div className="gig-card-buttons">
-          <Button className="shira-button" id="remove" onClick={removeGig}>
-            מחק
-          </Button>
           <Button className="shira-button" id="paid" onClick={removeGig}>
-            שולם!
+            שולם? העבר לרשימה
+          </Button>
+          <Button className="shira-button" id="remove" onClick={removeGig}>
+           <img src={trashIcon} className="trashIcon"/>
           </Button>
           </div>
         </Card.Body>
