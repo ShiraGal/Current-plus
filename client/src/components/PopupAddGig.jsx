@@ -1,9 +1,13 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useRef, useContext } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import {StoreCtxt} from "../services/StoreService"
+
 
 function PopupAddGig(props) {
-  const [popup, setPopup] = props.popup;
+  const {user, gigs} = useContext(StoreCtxt).states;
+  const {getMyGigs, addNewGig} = useContext(StoreCtxt).actions;
+  // const [popup, setPopup] = props.popup;
   const userId = props.userId;
   const date = useRef();
   const client = useRef();
@@ -15,26 +19,36 @@ function PopupAddGig(props) {
     if(!date.current.value){
       console.log("ddddd"+date.current.value);
     }
+    const gigData = {date: date.current.value,
+      client: client.current.value,
+      details: details.current.value,
+      payment: payment.current.value,}
 
-    axios
-      .post(`http://localhost:3800/api/gigs/user/${userId}`, {
-        date: date.current.value,
-        client: client.current.value,
-        details: details.current.value,
-        payment: payment.current.value,
-      })
-      .then((res) => {
-        console.log(res);
-        setPopup(!popup);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+    console.log(gigData.payment);
+
+    addNewGig(userId, gigData);
+    getMyGigs();
+
+
+  //   axios
+  //     .post(`http://localhost:3800/api/gigs/user/${userId}`, {
+  //       date: date.current.value,
+  //       client: client.current.value,
+  //       details: details.current.value,
+  //       payment: payment.current.value,
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //       setPopup(!popup);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // };
 
   // const closePopup = (e) => {
   //   setPopup("close?");
-  // };
+  };
 
   return (
     <>

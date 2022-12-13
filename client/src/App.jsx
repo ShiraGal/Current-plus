@@ -8,32 +8,34 @@ import { GigContext } from './context/GigContext';
 import { UserContext } from './context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
+import StoreServise from "./services/StoreService"
 
 
 function App() {
-const [user, setUser] = useState([])
-const [gigs, setGigs] = useState([])
+// const [user, setUser] = useState([])
+// const [gigs, setGigs] = useState([])
 // לעשות קונטקסט ליוזר
   return (
-        
+    <StoreServise children={ 
     <div className="App" >
-      <BrowserRouter>
-       <UserContext.Provider value={{ user, setUser }}>
-       <GigContext.Provider value={{ gigs, setGigs }}>
+      {/* <BrowserRouter> */}
+       {/* <UserContext.Provider value={{ user, setUser }}>
+       <GigContext.Provider value={{ gigs, setGigs }}> */}
        <Routes>
-          <Route path="/" element={<Login user = {[user, setUser]} gigs={[gigs, setGigs]}/>}/>
-          <Route path="/gigs" element={<Gigs user = {[user, setUser]} gigs={[gigs, setGigs]}/>}/>
-          <Route path="/paidgigs" element={<PaidGigs user = {[user, setUser]} gigs={[gigs, setGigs]}/>}/>
+          <Route path="/" element={<Login />}/>
+          <Route path="/gigs" element={<Gigs />}/>
+          <Route path="/paidgigs" element={<PaidGigs />}/>
           
-        </Routes>
-        </GigContext.Provider>
-        </UserContext.Provider>
-        <Routes>
+        {/* </Routes> */}
+        {/* </GigContext.Provider>
+        </UserContext.Provider> */}
+        {/* <Routes> */}
           <Route path="/register" element={<Register />}/>
         </Routes>
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
        
     </div>
+    } />
   )
 }
 

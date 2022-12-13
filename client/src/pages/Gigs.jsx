@@ -2,17 +2,21 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import GigCard from "../components/GigCard";
 import Header from "../components/Header";
+import { StoreCtxt } from "../services/StoreService";
 
 import PopupAddGig from "../components/PopupAddGig";
-import { UserContext } from "../context/UserContext";
-import { GigContext } from "../context/GigContext";
+// import { UserContext } from "../context/UserContext";
+// import { GigContext } from "../context/GigContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
 
 function Gigs(props) {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
-  const {gigs, setGigs} = useContext(GigContext);
+  // const { user, setUser } = useContext(UserContext);
+  // const { gigs, setGigs } = useContext(GigContext);
+  const {user, gigs} = useContext(StoreCtxt).states;
+  const {getMyGigs} = useContext(StoreCtxt).actions;
+
   const userId = user._id;
   const [popup, setPopup] = useState(false);
 
@@ -21,30 +25,34 @@ function Gigs(props) {
   const createGig = (e) => {
     setPopup(!popup);
   };
+
+  useEffect(()=>{
+    getMyGigs();
+  },[])
   // לטפל בהרשאה
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3800/api/gigs`, {
-        headers: {
-          authorization: "Bearer " + localStorage.token,
-        },
-      })
-      .then((res) => {
-        setGigs(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  }, [popup]);
+  // useEffect(() => {
+
+  //   axios
+  //     .get(`http://localhost:3800/api/gigs`, {
+  //       headers: {
+  //         authorization: "Bearer " + localStorage.token,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       setGigs(res.data);
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // }, []);
 
   return (
     <div className="gigs-page">
-      
-      < Header bold={true}/>
-      <Accordion >
+      <Header bold={true} />
+      <Accordion>
         <Accordion.Item eventKey="0" className="shira-head-Accordion">
-          <Accordion.Header >הוסף גיג חדש</Accordion.Header>
+          <Accordion.Header>הוסף גיג חדש</Accordion.Header>
           <Accordion.Body>
             <PopupAddGig popup={[popup, setPopup]} userId={user._id} />
           </Accordion.Body>
@@ -63,16 +71,20 @@ function Gigs(props) {
         </div> */}
         <div className="gigs-list">
           {gigs
-            ? gigs.filter((gig)=> gig.paidup===false).map((gig) => (
-                <GigCard
-                  popup={[popup, setPopup]}
-                  date={gig.date}
-                  client={gig.client}
-                  details={gig.details}
-                  payment={gig.payment}
-                  _id={gig._id}
-                />
-              ))
+            ? gigs
+                .filter((gig) => gig.paidup === false)
+                .map((gig) => {
+                  return (
+                    <GigCard key={gig._id}
+                      popup={[popup, setPopup]}
+                      date={gig.date}
+                      client={gig.client}
+                      details={gig.details}
+                      payment={gig.payment}
+                      _id={gig._id}
+                    />
+                  );
+                })
             : null}
         </div>
       </div>

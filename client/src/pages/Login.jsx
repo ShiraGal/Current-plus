@@ -5,11 +5,14 @@ import { UserContext } from "../context/UserContext";
 import { GigContext } from "../context/GigContext";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import thumbtackImg from "../icons/thumbtack.png"
+import { StoreCtxt } from "../services/StoreService";
 
 function Login(props) {
+  const {user, gigs} = useContext(StoreCtxt).states;
+  const {loginUser} = useContext(StoreCtxt).actions;
   // const [user, setUser] = props.user
-  const { user, setUser } = useContext(UserContext);
-  const {gigs, setGigs}= useContext(GigContext);
+  // const { user, setUser } = useContext(UserContext);
+  // const {gigs, setGigs}= useContext(GigContext);
   const email = useRef();
   const pass = useRef();
   const navigate = useNavigate();
@@ -34,34 +37,40 @@ function Login(props) {
   const submitForm = (e) => {
     e.preventDefault();
     console.log("by ref:", email.current.value, pass.current.value);
-
-    axios
-      .post(
-        "http://localhost:3800/api/users/login",
-        {
-          email: email.current.value,
-          password: pass.current.value,
-        },
-        {
-          headers: {
-            authorization: "Bearer " + localStorage.token,
-          },
-        }
-      )
-      .then((res) => {
-        // setUserName(res.data.msg);
-        localStorage.token = res.data.token;
-        setUser(res.data.msg);
-        // getAllGigs()
-        navigate("/gigs");
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
+    loginUser({
+              email: email.current.value,
+              password: pass.current.value,
+            })
+            
+  //   axios
+  //     .post(
+  //       "http://localhost:3800/api/users/login",
+  //       {
+  //         email: email.current.value,
+  //         password: pass.current.value,
+  //       },
+  //       {
+  //         headers: {
+  //           authorization: "Bearer " + localStorage.token,
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       // setUserName(res.data.msg);
+  //       localStorage.token = res.data.token;
+  //       setUser(res.data.msg);
+  //       // getAllGigs()
+  //       navigate("/gigs");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
   };
+
   const goRegister = (e) => {
     navigate("/register");
   };
+  
   return (
     <div d-flex className="shira-outForm">
       <div className="login-title">

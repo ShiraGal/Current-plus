@@ -10,8 +10,9 @@ async function getAllMyGigs(userId){
     const allGigs = await gigController.readAllByUser(userId)
     const gigs = allGigs.filter((gig)=> gig.isActive==true)
     if(gigs.length < 1){
-        console.log("no gigs");
-        throw { code: 400, message: "no gigs" };
+        // console.log("no gigs");
+        // throw { code: 400, message: "no gigs" };
+        return [];
     }
     else{
         console.log(gigs);
@@ -27,6 +28,8 @@ async function createGig(data, user_Id){
 }
 // ------------------------------------------------------------------------------updateGig
 async function updateGig(gigId, update){
+    console.log("gigId:  "+gigId);
+    console.log("update.isActive:  "+update.isActive);
         res = await gigController.update({_id : gigId}, update)
     console.log("done  :"+res);
 }

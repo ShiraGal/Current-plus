@@ -1,9 +1,12 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {Form, Button} from 'react-bootstrap'
+import { StoreCtxt } from "../services/StoreService";
 
 function Register() {
+  const {user, gigs} = useContext(StoreCtxt).states;
+  const {addNewUser} = useContext(StoreCtxt).actions;
   const userName = useRef();
   const email = useRef();
   const pass = useRef();
@@ -11,24 +14,30 @@ function Register() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(
-      "by ref:",
-      userName.current.value,
-      email.current.value,
-      pass.current.value
-    );
-    axios.post("http://localhost:3800/api/users/register", {
-        userName : userName.current.value,
-        email : email.current.value,
-        password : pass.current.value
-    })
-    .then((res) => {
-        console.log(res);
-        navigate("/gigs")
-      })
-    .catch((err) => {
-        console.log(err.response.data);
-    });
+    // console.log(
+    //   "by ref:",
+    //   userName.current.value,
+    //   email.current.value,
+    //   pass.current.value
+    // );
+    addNewUser({
+          userName : userName.current.value,
+          email : email.current.value,
+          password : pass.current.value
+        })
+        navigate("/")
+    // axios.post("http://localhost:3800/api/users/register", {
+    //     userName : userName.current.value,
+    //     email : email.current.value,
+    //     password : pass.current.value
+    // })
+    // .then((res) => {
+    //     console.log(res);
+    //     navigate("/gigs")
+    //   })
+    // .catch((err) => {
+    //     console.log(err.response.data);
+    // });
   };
 
   return (

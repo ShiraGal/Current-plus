@@ -250,6 +250,26 @@ align-items: center;
   height: 32px;
   margin: 8px;
 }
+.dropdown-item {
+  width: auto;
+  padding: 0px;
+  border-radius: 50%;
+}
+
+.dropdown-menu.show{
+  display: flex;
+  justify-content: right;
+  padding: 0px;
+}
+
+.dropdown-menu.show :hover{
+  background-color: var(--bs-white);
+}
+
+/* .header-right{
+  display: flex;
+  justify-content: center;
+} */
 
  a{
   color: #ffffff;

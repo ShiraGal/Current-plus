@@ -29,14 +29,14 @@ async function register(user){
 
 // ---------------------------------------------------------------------login
 async function login(data){
-    console.log("login logic:   "+data.password);
-    const user = await userController.readOn({email : data.email}, "+password")
-    console.log("user ====>  "+user[0]);
+    console.log("login logic:   "+data.user.password);
+    const user = await userController.readOn({email : data.user.email}, "+password")
+    console.log("user ====>  "+user);
     if(user.length<1){
         // console.log("user does not exist");
         throw { code: 400, message: "user does not exist" };
     }
-    if(data.password !== user[0].password){
+    if(data.user.password !== user[0].password){
         // console.log("not password");
         throw { code: 400, message: "wrong password" };
     }

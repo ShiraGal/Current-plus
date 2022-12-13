@@ -13,13 +13,15 @@ router.get("/",authJWT, async (req, res)=>{
         res.send(result)
     }
     catch(err){
-        console.log("rout-getAllGigs-error");
+        // console.log("rout-getAllGigs-error");
         res.status(err.code).send(err.message)
     }
 })
 // ------------------------------------------------------------create gig
 router.post("/user/:_id?", async (req, res)=>{
     try{
+        console.log("req.body==>  "+req.body);
+        console.log("req.params._id==>  "+req.params._id);
         const result = await gigLogic.createGig(req.body, req.params._id)
         res.send(result)
     }

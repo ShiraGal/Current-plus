@@ -1,10 +1,14 @@
 import axios from "axios";
+import { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import "../App.css";
 import thumbtackImg from "../icons/thumbtack.png"
 import trashIcon from "../icons/trash.png"
+import {StoreCtxt} from "../services/StoreService"
 
 function GigCard(props) {
+  const {user, gigs} = useContext(StoreCtxt).states;
+  const {getMyGigs, addNewGig, passToPaidGigs, removeFromGigs} = useContext(StoreCtxt).actions;
   const date = props.date.slice(0, 10);
   const client = props.client;
   const details = props.details;
@@ -19,23 +23,31 @@ function GigCard(props) {
 
   const plus30 = (today - gigTime) / day;
 
-  const removeGig = (e) => {
-    console.log(e.target.id);
-    if(e.target.id==="paid"){
-      update = {paidup : true}
-    }else{
-      update = {isActive: false}
-    }
-    axios
-      .put(`http://localhost:3800/api/gigs/${gigId}`,update)
-      .then((res) => {
-        console.log(res);
-        setPopup(!popup);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+  const passThisGig = ()=>{
+    passToPaidGigs(gigId);
+    getMyGigs();
+  }
+  const removeThisGig = ()=>{
+    removeFromGigs(gigId);
+    getMyGigs();
+  }
+  // const removeGig = (e) => {
+  //   console.log(e.target.id);
+  //   if(e.target.id==="paid"){
+  //     update = {paidup : true}
+  //   }else{
+  //     update = {isActive: false}
+  //   }
+  //   axios
+  //     .put(`http://localhost:3800/api/gigs/${gigId}`,update)
+  //     .then((res) => {
+  //       console.log(res);
+  //       setPopup(!popup);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // };
   return (
     <>
       {/* <div className="gig-card"> */}
@@ -51,10 +63,10 @@ function GigCard(props) {
           <Card.Text>{details}</Card.Text>
           <Card.Subtitle>{payment} ש"ח</Card.Subtitle>
           <div className="gig-card-buttons">
-          <Button className="shira-button" id="paid" onClick={removeGig}>
+          <Button className="shira-button" id="paid" onClick={passThisGig}>
             שולם? העבר לרשימה
           </Button>
-          <Button className="shira-button" id="remove" onClick={removeGig}>
+          <Button className="shira-button" id="remove" onClick={removeThisGig}>
            <img src={trashIcon} className="trashIcon"/>
           </Button>
           </div>
