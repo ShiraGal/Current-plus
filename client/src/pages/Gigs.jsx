@@ -5,22 +5,16 @@ import Header from "../components/Header";
 import { StoreCtxt } from "../services/StoreService";
 
 import PopupAddGig from "../components/PopupAddGig";
-// import { UserContext } from "../context/UserContext";
-// import { GigContext } from "../context/GigContext";
 import { useNavigate } from "react-router-dom";
 import { Button, Accordion } from "react-bootstrap";
 
 function Gigs(props) {
   const navigate = useNavigate();
-  // const { user, setUser } = useContext(UserContext);
-  // const { gigs, setGigs } = useContext(GigContext);
   const {user, gigs} = useContext(StoreCtxt).states;
   const {getMyGigs} = useContext(StoreCtxt).actions;
 
   const userId = user._id;
   const [popup, setPopup] = useState(false);
-
-  // const myGigs = gigs.filter((gig)=> gig.paidup===false);
 
   const createGig = (e) => {
     setPopup(!popup);
@@ -29,23 +23,6 @@ function Gigs(props) {
   useEffect(()=>{
     getMyGigs();
   },[])
-  // לטפל בהרשאה
-  // useEffect(() => {
-
-  //   axios
-  //     .get(`http://localhost:3800/api/gigs`, {
-  //       headers: {
-  //         authorization: "Bearer " + localStorage.token,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setGigs(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response.data);
-  //     });
-  // }, []);
 
   return (
     <div className="gigs-page">
@@ -59,16 +36,7 @@ function Gigs(props) {
         </Accordion.Item>
       </Accordion>
 
-      {/* {popup == "open" ? (
-        <PopupAddGig popup={[popup, setPopup]} userId={user._id} />
-      ) : null}
-      <h1>{user.userName}</h1>
-      <button onClick={createGig}>add gig</button> */}
-
       <div className="out-gigs-list">
-        {/* <div>
-          <h2>הגיגים שלי</h2>
-        </div> */}
         <div className="gigs-list">
           {gigs
             ? gigs
@@ -94,4 +62,3 @@ function Gigs(props) {
 
 export default Gigs;
 
-// dor@gmail.com

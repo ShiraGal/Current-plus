@@ -1,38 +1,14 @@
 import { useRef, useState, useContext } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
-import { GigContext } from "../context/GigContext";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
-import thumbtackImg from "../icons/thumbtack.png"
+import logoImg from "../image/logo.png"
 import { StoreCtxt } from "../services/StoreService";
 
 function Login(props) {
-  const {user, gigs} = useContext(StoreCtxt).states;
   const {loginUser} = useContext(StoreCtxt).actions;
-  // const [user, setUser] = props.user
-  // const { user, setUser } = useContext(UserContext);
-  // const {gigs, setGigs}= useContext(GigContext);
   const email = useRef();
   const pass = useRef();
   const navigate = useNavigate();
-  //   const [userName, setUserName] = useState();
-
-  // const getAllGigs = ()=>{
-  //   axios
-  //     .get(`http://localhost:3800/api/gigs`, {
-  //       headers: {
-  //         authorization: "Bearer " + localStorage.token,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setGigs(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response.data);
-  //     });
-  // }
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -41,30 +17,6 @@ function Login(props) {
               email: email.current.value,
               password: pass.current.value,
             })
-            
-  //   axios
-  //     .post(
-  //       "http://localhost:3800/api/users/login",
-  //       {
-  //         email: email.current.value,
-  //         password: pass.current.value,
-  //       },
-  //       {
-  //         headers: {
-  //           authorization: "Bearer " + localStorage.token,
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       // setUserName(res.data.msg);
-  //       localStorage.token = res.data.token;
-  //       setUser(res.data.msg);
-  //       // getAllGigs()
-  //       navigate("/gigs");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response.data);
-  //     });
   };
 
   const goRegister = (e) => {
@@ -74,8 +26,7 @@ function Login(props) {
   return (
     <div d-flex className="shira-outForm">
       <div className="login-title">
-        <img className="thumbtackImg" src={thumbtackImg}></img>
-      <h1>שוטף+שלושים</h1>
+        <img className="login-title-logo" src={logoImg}></img>
       </div>
       <h3>הכרטיס הצהוב שיזכיר לך לדרוש תשלום מלקוח שהגזים</h3>
       <Form onSubmit={submitForm} className="shira-form">

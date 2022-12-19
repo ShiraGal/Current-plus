@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import ErrAlert from "../components/ErrComponent"
 import { useNavigate } from "react-router-dom";
 import {
   postNewUser,
@@ -9,11 +10,14 @@ import {
   removeTokenFromStorage,
 } from "./requests";
 
+
+
 export const StoreCtxt = createContext({});
 
 const StoreServise = ({ children }) => {
   const [user, setUser] = useState({});
   const [gigs, setGigs] = useState([]);
+  const [errPop, setErrPop] = useState("")
   const navigate = useNavigate();
 
   const addNewUser = async (newUser) => {
@@ -47,7 +51,7 @@ const StoreServise = ({ children }) => {
       })
       .then(() => getMyGigs())
       .then(() => navigate("/gigs"))
-      .catch((err) => console.log(err.response.data));
+      .catch((err) => alert(err.response.data));
   };
 
   const addNewGig = async (userId, gigData) => {
@@ -103,6 +107,7 @@ const StoreServise = ({ children }) => {
 
   return (
     <StoreCtxt.Provider value={{ actions, states }}>
+      {/* {errPop ? <ErrAlert myErr={errPop} /> : null} */}
       {children}
     </StoreCtxt.Provider>
   );
