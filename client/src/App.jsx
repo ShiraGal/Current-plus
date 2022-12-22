@@ -1,42 +1,29 @@
-import { useState } from 'react'
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Login from "./pages/Login"
-import Gigs from "./pages/Gigs"
-import PaidGigs from "./pages/PaidGigs"
-import Register from "./pages/Register"
-import { GigContext } from './context/GigContext';
-import { UserContext } from './context/UserContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'
-import StoreServise from "./services/StoreService"
 
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./pages/login/Login";
+import Gigs from "./pages/gigs/Gigs";
+import PaidGigs from "./pages/paidGigs/PaidGigs";
+import Register from "./pages/register/Register";
+import StoreServise from "./services/StoreService";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-// const [user, setUser] = useState([])
-// const [gigs, setGigs] = useState([])
-// לעשות קונטקסט ליוזר
   return (
-    <StoreServise children={ 
-    <div className="App" >
-      {/* <BrowserRouter> */}
-       {/* <UserContext.Provider value={{ user, setUser }}>
-       <GigContext.Provider value={{ gigs, setGigs }}> */}
-       <Routes>
-          <Route path="/" element={<Login />}/>
-          <Route path="/gigs" element={<Gigs />}/>
-          <Route path="/paidgigs" element={<PaidGigs />}/>
-          
-        {/* </Routes> */}
-        {/* </GigContext.Provider>
-        </UserContext.Provider> */}
-        {/* <Routes> */}
-          <Route path="/register" element={<Register />}/>
-        </Routes>
-        {/* </BrowserRouter> */}
-       
-    </div>
-    } />
-  )
+    <StoreServise
+      children={
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/gigs" element={<Gigs />} />
+            <Route path="/paidgigs" element={<PaidGigs />} />
+
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
+      }
+    />
+  );
 }
 
-export default App
+export default App;

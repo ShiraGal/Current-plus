@@ -1,6 +1,7 @@
+import "./PopupAddGig.css";
 import { useRef, useContext } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { StoreCtxt } from "../services/StoreService";
+import { StoreCtxt } from "../../services/StoreService";
 
 function PopupAddGig(props) {
   const { user, gigs } = useContext(StoreCtxt).states;
@@ -14,7 +15,7 @@ function PopupAddGig(props) {
   const submitGig = (e) => {
     e.preventDefault();
     if (!date.current.value) {
-      console.log("ddddd" + date.current.value);
+      console.log(date.current.value);
     }
     const gigData = {
       date: date.current.value,
@@ -78,7 +79,7 @@ function PopupAddGig(props) {
           </Col>
         </Form.Group>
 
-        <Button type="submit" value="Send">
+        <Button type="submit" value="Send" className="shira-button">
           הכנס גיג!
         </Button>
       </Form>

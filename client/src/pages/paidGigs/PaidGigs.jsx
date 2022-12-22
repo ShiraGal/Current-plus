@@ -1,12 +1,9 @@
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import Header from "../components/Header";
-import { UserContext } from "../context/UserContext";
-import { GigContext } from "../context/GigContext";
-import { Button, Accordion, Table } from "react-bootstrap";
-import trashIcon from "../icons/trash.png";
-import { useReducer } from "react";
-import { StoreCtxt } from "../services/StoreService";
+import "./paidGigs.css";
+import Header from "../../components/header/Header";
+import trashIcon from "../../icons/trash.png";
+import { StoreCtxt } from "../../services/StoreService";
+import { useContext } from "react";
+import { Button, Table } from "react-bootstrap";
 
 function PaidGigs() {
   const { user, gigs } = useContext(StoreCtxt).states;
@@ -17,10 +14,10 @@ function PaidGigs() {
   };
 
   return (
-    <>
+    <div className="paid-page">
       <Header bold={false} />
-      <div>
-        <Table striped bordered hover>
+      <div className="out-shira-table">
+        <Table className="shira-table">
           <thead>
             <tr>
               <th>לקוח</th>
@@ -42,7 +39,11 @@ function PaidGigs() {
                         <td>{gig.date.slice(0, 10)}</td>
                         <td>{gig.payment}</td>
                         <td>
-                          <Button onClick={removeThisGig} id={gig._id}>
+                          <Button
+                            onClick={removeThisGig}
+                            id={gig._id}
+                            className="shira-button"
+                          >
                             <img
                               id={gig._id}
                               src={trashIcon}
@@ -57,7 +58,7 @@ function PaidGigs() {
           </tbody>
         </Table>
       </div>
-    </>
+    </div>
   );
 }
 

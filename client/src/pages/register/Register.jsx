@@ -1,7 +1,8 @@
-import { useRef, useState, useContext } from "react";
+import "./Register.css";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { StoreCtxt } from "../services/StoreService";
+import { StoreCtxt } from "../../services/StoreService";
 
 function Register() {
   const { user, gigs } = useContext(StoreCtxt).states;
@@ -23,7 +24,7 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="register-page">
       <Form onSubmit={submitForm}>
         <Form.Group className="mb-3" controlId="formBasicText">
           <Form.Label>שם משתמש</Form.Label>
@@ -38,7 +39,7 @@ function Register() {
           <Form.Control type="Password" ref={pass} name="pass1" />
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" className="shira-button">
           שליחה
         </Button>
       </Form>

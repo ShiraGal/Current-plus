@@ -1,10 +1,8 @@
-import axios from "axios";
+import "./GigCard.css";
+import trashIcon from "../../icons/trash.png";
 import { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
-import "../App.css";
-import thumbtackImg from "../icons/thumbtack.png";
-import trashIcon from "../icons/trash.png";
-import { StoreCtxt } from "../services/StoreService";
+import { StoreCtxt } from "../../services/StoreService";
 
 function GigCard(props) {
   const { user, gigs } = useContext(StoreCtxt).states;
@@ -16,7 +14,6 @@ function GigCard(props) {
   const payment = props.payment;
   const gigId = props._id;
   const [popup, setPopup] = props.popup;
-  let update = {};
 
   const today = Date.now();
   const gigTime = Date.parse(date);
@@ -34,10 +31,10 @@ function GigCard(props) {
   };
 
   return (
-    <>
+    <div>
       <Card
         style={{ width: "18rem" }}
-        className="gig-card"
+        className="shira-gig-card"
         id={plus30 > 30 ? "gig-card-plus30" : null}
       >
         <Card.Body>
@@ -59,7 +56,7 @@ function GigCard(props) {
           </div>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 }
 

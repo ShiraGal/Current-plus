@@ -29,13 +29,9 @@ const getUserGigs = () => {
 };
 
 const postNewGig = (userId, gigData) => {
-  console.log("userId== " + userId);
-  console.log("gigData== " + gigData);
   return axios.post(`${serverUrl}/gigs/user/${userId}`, gigData);
 };
 const updateGig = (gigId, update) => {
-  console.log("gigId== " + gigId);
-  console.log("update== " + update);
   return axios.put(`${serverUrl}/gigs/${gigId}`, update);
 };
 

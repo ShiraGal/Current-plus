@@ -1,9 +1,10 @@
+import "./Header.css";
+import logo from "../../image/logo.png";
+import logOut from "../../icons/log-out.png";
 import { useContext } from "react";
-import logo from "../image/logo.png";
-import logOut from "../icons/log-out.png";
 import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { StoreCtxt } from "../services/StoreService";
+import { StoreCtxt } from "../../services/StoreService";
 
 function Header(props) {
   const { logoutUser } = useContext(StoreCtxt).actions;
